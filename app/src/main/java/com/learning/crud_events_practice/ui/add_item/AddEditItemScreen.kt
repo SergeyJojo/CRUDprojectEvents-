@@ -2,8 +2,10 @@ package com.learning.crud_events_practice.ui.add_item
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -25,6 +27,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.learning.crud_events_practice.ui.items_list.ItemsListViewModel
 import com.learning.crud_events_practice.util.UiEvent
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AddEditItemScreen(
@@ -62,7 +65,20 @@ fun AddEditItemScreen(
         }
 
     ) {
+
+
         Column(Modifier.fillMaxSize()) {
+            TextField(
+                value = viewModel.title,
+                onValueChange = {
+                    viewModel.onEvent(AddEditItemEvent.OnTitleChange(it))
+                },
+                placeholder = {
+                    Text(text = "Заголовок")
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = viewModel.description,
                 onValueChange = { viewModel.onEvent(AddEditItemEvent.OnDescriptionChange(it)) },

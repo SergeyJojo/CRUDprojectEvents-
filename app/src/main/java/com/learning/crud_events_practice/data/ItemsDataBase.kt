@@ -1,12 +1,13 @@
 package com.learning.crud_events_practice.data
 
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [Items::class],
-    version = 1
+    version = 1,
+    entities = [Items::class]
 )
 abstract class ItemsDataBase : RoomDatabase() {
 
