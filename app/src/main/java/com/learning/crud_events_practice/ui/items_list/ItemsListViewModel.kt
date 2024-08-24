@@ -63,6 +63,28 @@ class ItemsListViewModel @Inject constructor(private val repository: ItemsReposi
                     }
                 }
             }
+
+            is ItemsListEvent.OnAmountAddClick -> {
+                viewModelScope.launch {
+                    repository.insertItem(
+                        event.item.copy(
+                            amount = event.item.amount?.plus(1)
+                        )
+                    )
+                }
+
+            }
+
+            is ItemsListEvent.OnAmountDeleteClick -> {
+                viewModelScope.launch {
+                    repository.insertItem(
+                        event.item.copy(
+                            amount = event.item.amount?.minus(1)
+                        )
+                    )
+                }
+
+            }
         }
     }
 

@@ -68,7 +68,7 @@ class AddEditItemViewModel @Inject constructor(
                             description = description,
                             isDone = item?.isDone ?: false,
                             id = item?.id,
-                            amount = item?.amount
+                            amount = +1
                         )
 
 
