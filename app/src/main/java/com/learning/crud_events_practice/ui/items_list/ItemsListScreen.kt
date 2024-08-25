@@ -60,9 +60,11 @@ fun ItemsListScreen(
 
         }
     }) {
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)
+        ) {
             items(items.value) { item ->
                 Items(
                     item = item,
